@@ -1,26 +1,229 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-dark: 221.2 83.2% 43.3%;
+    --primary-light: 221.2 83.2% 63.3%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-dark: 220 14.3% 85.9%;
+    --secondary-light: 220 14.3% 98%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-soft: 220 14.3% 98%;
+    --accent-dark: 220 14.3% 90%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-dark: 217.2 91.2% 49.8%;
+    --primary-light: 217.2 91.2% 69.8%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-dark: 217.2 32.6% 12.5%;
+    --secondary-light: 217.2 32.6% 22.5%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-soft: 217.2 32.6% 12.5%;
+    --accent-dark: 217.2 32.6% 7.5%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .tagline {
+    font-family: serif;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+    color: hsl(var(--secondary-dark));
+  }
+
+  .section-title {
+    font-family: serif;
+    font-size: 1.5rem;
+    font-size: 2rem;
+    font-size: 2.25rem;
+    color: #3b82f6;
+    color: hsl(var(--primary));
+    margin-bottom: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-family: serif;
+    font-size: 1.25rem;
+    font-size: 1.5rem;
+    color: #6b7280;
+    color: hsl(var(--secondary));
+    margin-bottom: 1rem;
+  }
+
+  .button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fff;
+    color: hsl(var(--primary-dark));
+    background-color: #3b82f6;
+    background-color: hsl(var(--primary));
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .button-primary:hover {
+    background-color: #1d4ed8;
+    background-color: hsl(var(--primary-dark));
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+    color: hsl(var(--secondary-dark));
+    background-color: #f9fafb;
+    background-color: hsl(var(--secondary-light));
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .button-secondary:hover {
+    background-color: #e2e8f0;
+    background-color: hsl(var(--secondary));
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .card {
+    background-color: #fff;
+    background-color: hsl(var(--card));
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #cbd5e0;
+    border: 1px solid hsl(var(--input));
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #6b7280;
+    color: hsl(var(--foreground));
+    background-color: #fff;
+    background-color: hsl(var(--background));
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .input:focus {
+    border-color: #3b82f6;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .link {
+    color: #3b82f6;
+    color: hsl(var(--primary));
+    text-decoration: underline;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .link:hover {
+    color: #1d4ed8;
+    color: hsl(var(--primary-dark));
+  }
+}
+
+/* Simple fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Custom Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
